@@ -13,13 +13,13 @@ h1, h2, h3, h4, h5, p, li, a {
   background-color: #e3e3e3;
 }
 
-.rating i, .rating p {
+.rating p {
   font-size: 1.5em;
   margin: 1em;
 }
 
-.rating i {
-  line-height: unset;
+.rating > input {
+  width: 4em;
 }
 
 .card {
@@ -37,7 +37,12 @@ h1, h2, h3, h4, h5, p, li, a {
   margin: 0 auto;
 }
 
-.edit-delete-links {
+.edit-delete-links, .save-cancel-links {
   display: flex;
   justify-content: space-between;
+}
+
+input, textarea {
+  padding: 0.5em;
+  width: 100%;
 }
