@@ -1,0 +1,20 @@
+.rating {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  background-color: #e3e3e3;
+}
+
+.rating i, .rating p {
+  font-size: 1.5em;
+  margin: 1em;
+}
+
+.rating i {
+  line-height: unset;
+}
+
+.card {
+  display: flex;
+  margin: 2em auto;
+}
