@@ -1,27 +1,8 @@
 const baseURL = 'http://localhost:3000/games'
-
 let gameRow = document.querySelector('.game-row')
 
-function makeGame(title, image, description, designers, year, rating, id) {
-  return `<div class="col one-game" data-id="${id}">
-          <div class="card" style="width: 20rem;">
-            <img class="card-img-top game-link" src="${image}" alt="${title} game" data-id="${id}">
-            <div class="card-body">
-              <h4><a class="game-link" href="#" data-id="${id}">${title}</a></h4>
-            </div>
-            <div class="rating">
-              <p>${rating}</p>
-            </div>
-            <ul class="list-group list-group-flush">
-            <li class="list-group-item">${description}</li>
-              <li class="list-group-item">Designer(s): ${designers}</li>
-              <li class="list-group-item">Year: ${year}</li>
-            </ul>
-          </div>
-        </div>`
-}
 
-function editGame(title, image, description, designers, year, rating, id, baseURL) {
+function editGameView(title, image, description, designers, year, rating, id, baseURL) {
   return `    <div class="col-lg-6 col-md-12 col-sm-12">
         <img class="wide" src="${image}" alt="game">
       </div>
@@ -29,55 +10,34 @@ function editGame(title, image, description, designers, year, rating, id, baseUR
         <div class="col single-view mb-5" data-id="1">
           <form>
             <label for="image">Image URL:</label>
-            <input type="text" name="image" value="${image}"></input>
+            <input type="text" name="image" value="${image}" id="image-input"></input>
 
             <label for="title" class="mt-3">Title:</label>
-            <input type="text" name="title" value="${title}"></input>
+            <input type="text" name="title" value="${title}" id="title-input"></input>
 
             <label for="rating" class="mt-3">Rating:</label>
             <div class="rating">
-              <input type="text" name="rating" value="${rating}"></input>
+              <input type="text" name="rating" value="${rating}" id="rating-input"></input>
             </div>
 
             <label for="description" class="mt-3">Description:</label>
-            <textarea name="description" value="this will be dynamic" rows="4">${description}</textarea>
+            <textarea name="description" value="this will be dynamic" rows="4" id="description-area">${description}</textarea>
 
             <label for="designers" class="mt-3">Designer(s):</label>
-            <input type="text" name="designers" value="${designers}"></input>
+            <input type="text" name="designers" value="${designers}" id="designer-input"></input>
 
             <label for="year" class="mt-3">Year published:</label>
-            <input type="text" name="year" value="${year}"></input>
+            <input type="text" name="year" value="${year}" id="year-input"></input>
           </form>
           <div class="save-cancel-links mt-4">
-            <a href="#">Cancel</a>
-            <a href="#" class="text-success">Save</a>
+            <a href="#" class="cancel-link">Cancel</a>
+            <a href="#" class="save-link text-success">Save</a>
           </div>
         </div>
       </div>`
 }
 
-function oneGame(title, image, description, designers, year, rating, id, baseURL) {
-  return `    <div class="col-lg-6 col-md-12 col-sm-12">
-      <img class="wide" src="${image}" alt="${title} game">
-      </div>
-      <div class="col-lg-6 col-md-12 col-sm-12">
-        <div class="col single-view mb-5" data-id="${id}">
-          <h1 class="text-center mb-4"><a href="${baseURL}/${id}">${title}</a></h1>
-          <div class="rating">
-            <p>10</p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">${description}</li>
-            <li class="list-group-item">Designer(s): ${designers}</li>
-            <li class="list-group-item">Year: ${year}</li>
-            <li class="list-group-item edit-delete-links">
-              <a href="#" class="delete-link text-danger">Delete</a>
-              <a href="#" class="edit-link">Edit</a>
-            </li>
-          </ul>
-        </div>
-      </div> `
-}
+
 
 function renderOneGame(title, image, description, designers, year, rating, id, baseURL) {
 
@@ -86,9 +46,37 @@ function renderOneGame(title, image, description, designers, year, rating, id, b
   //event listener to swap in edit view
   let editLink = document.querySelector('.edit-link')
   editLink.addEventListener('click', (e) => {
-    gameRow.innerHTML = editGame(title, image, description, designers, year, rating, id, baseURL)
+    updateGame(title, image, description, designers, year, rating, id, baseURL)
   })
   //event listener for delete
+}
+
+function updateGame(title, image, description, designers, year, rating, id, baseURL) {
+  //load edit view
+  gameRow.innerHTML = editGameView(title, image, description, designers, year, rating, id, baseURL)
+
+  let saveLink = document.querySelector('.save-link')
+  saveLink.addEventListener('click', (e) => {
+    let newImage = document.querySelector('#image-input').value
+    let newTitle = document.querySelector('#title-input').value
+    let newRating =
+    document.querySelector('#rating-input').value
+    let newDescription =
+    document.querySelector('#description-area').value
+    let newDesigners = document.querySelector('#designer-input').value
+    let newYear = document.querySelector('#year-input').value
+
+    axios.put(`${baseURL}/${id}`, {title: newTitle, image: newImage, rating: newRating, description: newDescription, designers: newDesigners, year: newYear})
+      .then(result => {
+        console.log(result.data);
+        const {title, image, rating, description, designers, year} = result.data
+        renderOneGame(title, image, description, designers, year, rating, id, baseURL)
+      })
+      .catch(errors => {
+        console.log(errors);
+      })
+  })
+  //event listener for save.. axios.PUT
 }
 
 function loadGames(baseURL) {
