@@ -1,3 +1,11 @@
+h1 {
+  font-size: 4em;
+}
+
+h1, h2, h3, h4, h5, p, li, a {
+  margin: 0em;
+}
+
 .rating {
   display: flex;
   justify-content: space-around;
@@ -17,4 +25,21 @@
 .card {
   display: flex;
   margin: 2em auto;
+}
+
+.wide {
+  width: 100%;
+}
+
+.single-view {
+  width: 80%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.edit-delete-links {
+  display: flex;
+  justify-content: space-between;
 }

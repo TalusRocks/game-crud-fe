@@ -1,45 +1,76 @@
 const baseURL = 'http://localhost:3000/games'
 
-function makeGame(title, image, description, designers, artists, publishers, year, rating) {
-  return `<div class="col">
+function makeGame(title, image, description, designers, year, rating, id) {
+  return `<div class="col one-game" data-id="${id}">
           <div class="card" style="width: 20rem;">
-            <img class="card-img-top" src="${image}" alt="${title} game">
+            <img class="card-img-top game-link" src="${image}" alt="${title} game" data-id="${id}">
             <div class="card-body">
-              <h4 class="card-title">${title}</h4>
-              <p class="card-text">${description}</p>
+              <h4><a class="game-link" href="#" data-id="${id}">${title}</a></h4>
             </div>
             <div class="rating">
-              <i class="fa fa-chevron-circle-left"></i>
+              <i class="fa fa-chevron-left"></i>
               <p>${rating}</p>
-              <i class="fa fa-chevron-circle-right"></i>
+              <i class="fa fa-chevron-right"></i>
             </div>
             <ul class="list-group list-group-flush">
+            <li class="list-group-item">${description}</li>
               <li class="list-group-item">Designer(s): ${designers}</li>
-              <li class="list-group-item">Artist(s): ${artists}</li>
-              <li class="list-group-item">Publisher(s): ${publishers}</li>
               <li class="list-group-item">Year: ${year}</li>
             </ul>
-            <div class="card-body">
-              <a href="#" class="card-link">Edit</a>
-            </div>
           </div>
         </div>`
 }
 
-axios.get(baseURL)
-  .then(result => {
-    let gameRow = document.querySelector('.game-row')
-    let games = result.data
-    for (var i in games) {
-      let title = games[i].title
-      let description = games[i].description
-      let image = games[i].image
-      let designers = games[i].designers
-      let artists = games[i].artists
-      let publishers = games[i].publishers
-      let year = games[i].year
-      let rating = games[i].rating
-      gameRow.innerHTML += makeGame(title, image, description, designers, artists, publishers, year, rating)
-    }
-    // gameRow.innerHTML = `<p>Yas</p>`
-  })
+function oneGame(title, image, description, designers, year, rating, id, baseURL) {
+  return `    <div class="col single-view mt-5 mb-5" data-id="${id}">
+          <h1 class="text-center mb-4"><a href="${baseURL}/${id}">${title}</a></h1>
+          <img class="wide" src="${image}" alt="${title} game">
+          <div class="rating">
+            <i class="fa fa-chevron-left"></i>
+            <p>10</p>
+            <i class="fa fa-chevron-right"></i>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">${description}</li>
+            <li class="list-group-item">Designer(s): ${designers}</li>
+            <li class="list-group-item">Year: ${year}</li>
+            <li class="list-group-item edit-delete-links">
+              <a href="#" class="card-link text-danger">Delete</a>
+              <a href="#" class="card-link">Edit</a>
+            </li>
+          </ul>
+      </div>`
+}
+
+function loadGames(baseURL) {
+  axios.get(baseURL)
+    .then(result => {
+      let gameRow = document.querySelector('.game-row')
+      let games = result.data
+      for (let i in games) {
+        let title = games[i].title
+        let description = games[i].description
+        let image = games[i].image
+        let designers = games[i].designers
+        let year = games[i].year
+        let rating = games[i].rating
+        let id = games[i].id
+        gameRow.innerHTML += makeGame(title, image, description, designers, year, rating, id)
+
+        let gameLinks = document.querySelectorAll('.one-game')
+        for (let i = 0; i < gameLinks.length; i++) {
+          gameLinks[i].addEventListener('click', function(e) {
+            if (e.target.matches(".game-link")) {
+              // let dataId = e.srcElement.getAttribute('data-id')
+              // console.log(dataId);
+              // console.log(result.data[i]);
+              let thisGame = result.data[i]
+              gameRow.innerHTML = oneGame(thisGame.title, thisGame.image, thisGame.description, thisGame.designers, thisGame.year, thisGame.rating, thisGame.id, baseURL)
+            }
+
+          })
+        }
+      }
+    })
+}
+loadGames(baseURL)
