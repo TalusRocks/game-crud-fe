@@ -6,6 +6,19 @@ h1, h2, h3, h4, h5, p, li, a {
   margin: 0em;
 }
 
+ul.navbar-nav {
+  width: 100%;
+}
+
+li.add-game {
+  margin-left: auto;
+}
+
+button.add-game {
+  width: 100%;
+  margin: 0 auto;
+}
+
 .rating {
   display: flex;
   justify-content: space-around;
@@ -40,9 +53,22 @@ h1, h2, h3, h4, h5, p, li, a {
 .edit-delete-links, .save-cancel-links {
   display: flex;
   justify-content: space-between;
+  font-size: 2em;
 }
 
 input, textarea {
   padding: 0.5em;
   width: 100%;
+}
+
+@media (max-width:992px) {
+  li.add-game {
+    display: none;
+  }
+}
+
+@media (min-width:991px) {
+  button.add-game {
+    display: none;
+  }
 }
