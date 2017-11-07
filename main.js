@@ -22,9 +22,12 @@ function makeGame(title, image, description, designers, year, rating, id) {
 }
 
 function oneGame(title, image, description, designers, year, rating, id, baseURL) {
-  return `    <div class="col single-view mt-5 mb-5" data-id="${id}">
+  return `    <div class="col-lg-6 col-md-12 col-sm-12">
+      <img class="wide" src="${image}" alt="${title} game">
+      </div>
+      <div class="col-lg-6 col-md-12 col-sm-12">
+        <div class="col single-view mb-5" data-id="${id}">
           <h1 class="text-center mb-4"><a href="${baseURL}/${id}">${title}</a></h1>
-          <img class="wide" src="${image}" alt="${title} game">
           <div class="rating">
             <i class="fa fa-chevron-left"></i>
             <p>10</p>
@@ -39,7 +42,8 @@ function oneGame(title, image, description, designers, year, rating, id, baseURL
               <a href="#" class="card-link">Edit</a>
             </li>
           </ul>
-      </div>`
+        </div>
+      </div> `
 }
 
 function loadGames(baseURL) {
