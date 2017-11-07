@@ -21,6 +21,41 @@ function makeGame(title, image, description, designers, year, rating, id) {
         </div>`
 }
 
+function editGame(title, image, description, designers, year, rating, id, baseURL) {
+  return `    <div class="col-lg-6 col-md-12 col-sm-12">
+        <img class="wide" src="${image}" alt="game">
+      </div>
+      <div class="col-lg-6 col-md-12 col-sm-12">
+        <div class="col single-view mb-5" data-id="1">
+          <form>
+            <label for="image">Image URL:</label>
+            <input type="text" name="image" value="${image}"></input>
+
+            <label for="title" class="mt-3">Title:</label>
+            <input type="text" name="title" value="${title}"></input>
+
+            <label for="rating" class="mt-3">Rating:</label>
+            <div class="rating">
+              <input type="text" name="rating" value="${rating}"></input>
+            </div>
+
+            <label for="description" class="mt-3">Description:</label>
+            <textarea name="description" value="this will be dynamic" rows="4">${description}</textarea>
+
+            <label for="designers" class="mt-3">Designer(s):</label>
+            <input type="text" name="designers" value="${designers}"></input>
+
+            <label for="year" class="mt-3">Year published:</label>
+            <input type="text" name="year" value="${year}"></input>
+          </form>
+          <div class="save-cancel-links mt-4">
+            <a href="#">Cancel</a>
+            <a href="#" class="text-success">Save</a>
+          </div>
+        </div>
+      </div>`
+}
+
 function oneGame(title, image, description, designers, year, rating, id, baseURL) {
   return `    <div class="col-lg-6 col-md-12 col-sm-12">
       <img class="wide" src="${image}" alt="${title} game">
@@ -49,9 +84,9 @@ function renderOneGame(title, image, description, designers, year, rating, id, b
   gameRow.innerHTML = oneGame(title, image, description, designers, year, rating, id, baseURL)
 
   //event listener to swap in edit view
-  let editGame = document.querySelector('.edit-link')
-  editGame.addEventListener('click', (e) => {
-    console.log("clicky");
+  let editLink = document.querySelector('.edit-link')
+  editLink.addEventListener('click', (e) => {
+    gameRow.innerHTML = editGame(title, image, description, designers, year, rating, id, baseURL)
   })
   //event listener for delete
 }
@@ -84,4 +119,4 @@ function loadGames(baseURL) {
       }
     })
 }
-//loadGames(baseURL)
+loadGames(baseURL)
