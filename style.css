@@ -10,12 +10,26 @@ ul.navbar-nav {
   width: 100%;
 }
 
+a#home {
+  font-weight: 700;
+  color: #007bff;
+}
+
+a#home:hover {
+  color: #0069d9;
+}
+
 li.add-game {
   margin-left: auto;
 }
 
+.add-game-button-div {
+  display: flex;
+}
+
 button.add-game {
   width: 100%;
+  max-width: 25em;
   margin: 0 auto;
 }
 
@@ -23,12 +37,14 @@ button.add-game {
   display: flex;
   justify-content: space-around;
   align-content: center;
-  background-color: #e3e3e3;
+  background-color: #4CAF50;
 }
 
 .rating p {
   font-size: 1.5em;
-  margin: 1em;
+  font-weight: 700;
+  color: #fff;
+  margin: 0.25em;
 }
 
 .rating > input {
@@ -53,7 +69,7 @@ button.add-game {
 .edit-delete-links, .save-cancel-links {
   display: flex;
   justify-content: space-between;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 input, textarea {
@@ -64,6 +80,12 @@ input, textarea {
 @media (max-width:992px) {
   li.add-game {
     display: none;
+  }
+  .game-image {
+    max-width: 500px;
+  }
+  h1 {
+    font-size: 2em;
   }
 }
 

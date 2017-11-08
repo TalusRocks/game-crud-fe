@@ -18,12 +18,12 @@ function makeGame(title, image, description, designers, year, rating, id) {
 }
 
 function oneGame(title, image, description, designers, year, rating, id, baseURL) {
-  return `    <div class="col-lg-6 col-md-12 col-sm-12">
-      <img class="wide" src="${image}" alt="${title} game">
+  return `    <div class="col-lg-6 col-md-12 col-sm-12 text-center">
+      <img class="wide game-image mt-4" src="${image}" alt="${title} game">
       </div>
       <div class="col-lg-6 col-md-12 col-sm-12">
         <div class="col single-view mb-5" data-id="${id}">
-          <h1 class="text-center mb-4"><a href="${baseURL}/${id}">${title}</a></h1>
+          <h1 class="text-center mt-4 mb-4"><a href="${baseURL}/${id}">${title}</a></h1>
           <div class="rating">
             <p>${rating}</p>
           </div>
@@ -41,7 +41,7 @@ function oneGame(title, image, description, designers, year, rating, id, baseURL
 }
 
 function editGameView(title, image, description, designers, year, rating, id, baseURL) {
-  return `    <div class="col-lg-6 col-md-12 col-sm-12">
+  return `    <div class="col-lg-6 col-md-12 col-sm-12 mb-3">
         <img class="wide" src="${image}" alt="game">
       </div>
       <div class="col-lg-6 col-md-12 col-sm-12">
@@ -83,24 +83,24 @@ function createGameView() {
             <div class="col single-view mb-5" data-id="1">
               <form>
                 <label for="image">Image URL:</label>
-                <input type="text" name="image" id="image-input"></input>
+                <input type="text" name="image" id="image-input" required></input>
 
                 <label for="title" class="mt-3">Title:</label>
-                <input type="text" name="title" id="title-input"></input>
+                <input type="text" name="title" id="title-input" required></input>
 
                 <label for="rating" class="mt-3">Rating:</label>
                 <div class="rating">
-                  <input type="text" name="rating" id="rating-input"></input>
+                  <input type="text" name="rating" id="rating-input" required></input>
                 </div>
 
                 <label for="description" class="mt-3">Description:</label>
                 <textarea name="description" rows="4" id="description-area"></textarea>
 
                 <label for="designers" class="mt-3">Designer(s):</label>
-                <input type="text" name="designers"  id="designer-input"></input>
+                <input type="text" name="designers"  id="designer-input" required></input>
 
                 <label for="year" class="mt-3">Year published:</label>
-                <input type="text" name="year"  id="year-input"></input>
+                <input type="text" name="year"  id="year-input" required></input>
               </form>
               <div class="save-cancel-links mt-4">
                 <a href="#" class="cancel-link text-secondary">Cancel</a>
