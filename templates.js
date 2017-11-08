@@ -82,13 +82,13 @@ function createGameView() {
           <div class="col-lg-6 col-md-12 col-sm-12">
             <div class="col single-view mb-5" data-id="1">
               <form>
-                <label for="image">Image URL:</label>
+                <label for="image"><span class="text-danger">*</span>Image URL:</label>
                 <input type="text" name="image" id="image-input" required></input>
 
-                <label for="title" class="mt-3">Title:</label>
+                <label for="title" class="mt-3"><span class="text-danger">*</span>Title:</label>
                 <input type="text" name="title" id="title-input" required></input>
 
-                <label for="rating" class="mt-3">Rating:</label>
+                <label for="rating" class="mt-3"><span class="text-danger">*</span>Rating:</label>
                 <div class="rating">
                   <input type="text" name="rating" id="rating-input" required></input>
                 </div>
@@ -96,10 +96,10 @@ function createGameView() {
                 <label for="description" class="mt-3">Description:</label>
                 <textarea name="description" rows="4" id="description-area"></textarea>
 
-                <label for="designers" class="mt-3">Designer(s):</label>
+                <label for="designers" class="mt-3"><span class="text-danger">*</span>Designer(s):</label>
                 <input type="text" name="designers"  id="designer-input" required></input>
 
-                <label for="year" class="mt-3">Year published:</label>
+                <label for="year" class="mt-3"><span class="text-danger">*</span>Year published:</label>
                 <input type="text" name="year"  id="year-input" required></input>
               </form>
               <div class="save-cancel-links mt-4">

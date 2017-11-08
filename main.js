@@ -79,22 +79,19 @@ function createGame() {
 
 
     let imageLabel = document.querySelector('label[for="image"]')
-    if (newImage) imageLabel.innerHTML = "Image URL:"
+    if (newImage) imageLabel.innerHTML = `<span class="text-danger">*</span>Image URL:`
 
     let titleLabel = document.querySelector('label[for="title"]')
-    if (newTitle) titleLabel.innerHTML = "Title:"
+    if (newTitle) titleLabel.innerHTML = `<span class="text-danger">*</span>Title:`
 
     let ratingLabel = document.querySelector('label[for="rating"]')
-    if (newRating) ratingLabel.innerHTML = "Rating:"
-
-    let descriptionLabel = document.querySelector('label[for="description"]')
-    if (newDescription) descriptionLabel.innerHTML = "Description:"
+    if (newRating) ratingLabel.innerHTML = `<span class="text-danger">*</span>Rating:`
 
     let designersLabel = document.querySelector('label[for="designers"]')
-    if (newDesigners) designersLabel.innerHTML = "Designer(s):"
+    if (newDesigners) designersLabel.innerHTML = `<span class="text-danger">*</span>Designer(s):`
 
     let yearLabel = document.querySelector('label[for="year"]')
-    if (newYear) yearLabel.innerHTML = "Year published:"
+    if (newYear) yearLabel.innerHTML = `<span class="text-danger">*</span>Year published:`
 
 
     axios.post(baseURL, {title: newTitle, image: newImage, rating: newRating, description: newDescription, designers: newDesigners, year: newYear, id:""})
@@ -116,10 +113,6 @@ function createGame() {
           let errorMessage = `<p class="text-danger">Please enter a rating</p>`
           ratingLabel.innerHTML = errorMessage
         }
-        if (!newDescription){
-          let errorMessage = `<p class="text-danger">Please enter a description</p>`
-          descriptionLabel.innerHTML = errorMessage
-        }
         if (!newDesigners){
           let errorMessage = `<p class="text-danger">Please enter designer name(s)</p>`
           designersLabel.innerHTML = errorMessage
@@ -128,7 +121,6 @@ function createGame() {
           let errorMessage = `<p class="text-danger">Please enter year published</p>`
           yearLabel.innerHTML = errorMessage
         }
-
         console.log(errors);
       })
   })
