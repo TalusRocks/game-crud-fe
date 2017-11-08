@@ -32,7 +32,7 @@ function oneGame(title, image, description, designers, year, rating, id, baseURL
             <li class="list-group-item">Designer(s): ${designers}</li>
             <li class="list-group-item">Year: ${year}</li>
             <li class="list-group-item edit-delete-links">
-              <a href="#" class="delete-link text-danger">Delete</a>
+              <a href="#" class="delete-link text-danger" data-id="${id}">Delete</a>
               <a href="#" class="edit-link">Edit</a>
             </li>
           </ul>

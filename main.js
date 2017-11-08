@@ -11,7 +11,21 @@ function renderOneGame(title, image, description, designers, year, rating, id, b
   editLink.addEventListener('click', (e) => {
     updateGame(title, image, description, designers, year, rating, id, baseURL)
   })
+
   //event listener for delete
+  let deleteLink = document.querySelector('.delete-link')
+  deleteLink.addEventListener('click', (e) => {
+    let id = e.srcElement.getAttribute('data-id')
+    deleteGame(id)
+  })
+}
+
+function deleteGame(id) {
+  axios.delete(`${baseURL}/${id}`)
+    .then(result => {
+      gameRow.innerHTML = ""
+      loadGames(baseURL)
+    })
 }
 
 function updateGame(title, image, description, designers, year, rating, id, baseURL) {
@@ -100,11 +114,16 @@ function createGame() {
     axios.post(baseURL, {title: newTitle, image: newImage, rating: newRating, description: newDescription, designers: newDesigners, year: newYear, id:""})
       .then(result => {
         const {title, image, rating, description, designers, year, id} = result.data
-        
+
         renderOneGame(title, image, description, designers, year, rating, id, baseURL)
       })
+  })
 
-
+  //cancel listener
+  let cancelLink = document.querySelector('.cancel-link')
+  cancelLink.addEventListener('click', (e) => {
+    gameRow.innerHTML = ""
+    loadGames(baseURL)
   })
 
 }
