@@ -67,8 +67,8 @@ function createGame() {
   gameRow.innerHTML = createGameView()
 
   //save listener --> UPDATE
-  let saveLink = document.querySelector('.save-link')
-  saveLink.addEventListener('click', (e) => {
+  let submit = document.querySelector('#submit')
+  submit.addEventListener('click', (e) => {
 
     let newImage = document.querySelector('#image-input').value
     let newTitle = document.querySelector('#title-input').value
@@ -113,8 +113,8 @@ function updateGame(title, image, description, designers, year, rating, id, base
   })
 
   //save listener --> UPDATE
-  let saveLink = document.querySelector('.save-link')
-  saveLink.addEventListener('click', (e) => {
+  let submit = document.querySelector('#submit')
+  submit.addEventListener('click', (e) => {
     let newImage = document.querySelector('#image-input').value
     let newTitle = document.querySelector('#title-input').value
     let newRating = document.querySelector('#rating-input').value

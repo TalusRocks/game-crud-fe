@@ -72,6 +72,17 @@ button.add-game {
   font-size: 1.5em;
 }
 
+#submit {
+  border: none;
+  background-color: #fff;
+  color: #28a745;
+}
+
+button#submit:hover {
+  color: #388e3c;
+  text-decoration: underline;
+}
+
 input, textarea {
   padding: 0.5em;
   width: 100%;

@@ -48,28 +48,28 @@ function editGameView(title, image, description, designers, year, rating, id, ba
         <div class="col single-view mb-5" data-id="1">
           <form>
             <label for="image"><span class="text-danger">*</span>Image URL:</label>
-            <input type="text" name="image" value="${image}" id="image-input" required></input>
+            <input type="url" name="image" value="${image}" id="image-input" required>
 
             <label for="title" class="mt-3"><span class="text-danger">*</span>Title:</label>
-            <input type="text" name="title" value="${title}" id="title-input" required></input>
+            <input type="text" name="title" value="${title}" id="title-input" required>
 
             <label for="rating" class="mt-3"><span class="text-danger">*</span>Rating:</label>
             <div class="rating">
-              <input type="text" name="rating" value="${rating}" id="rating-input" required></input>
+              <input type="text" name="rating" value="${rating}" id="rating-input" required>
             </div>
 
             <label for="description" class="mt-3">Description:</label>
             <textarea name="description" value="this will be dynamic" rows="4" id="description-area">${description}</textarea>
 
             <label for="designers" class="mt-3"><span class="text-danger">*</span>Designer(s):</label>
-            <input type="text" name="designers" value="${designers}" id="designer-input" required></input>
+            <input type="text" name="designers" value="${designers}" id="designer-input" required>
 
             <label for="year" class="mt-3"><span class="text-danger">*</span>Year published:</label>
-            <input type="text" name="year" value="${year}" id="year-input" required></input>
+            <input type="text" name="year" value="${year}" id="year-input" required>
           </form>
           <div class="save-cancel-links mt-4">
             <a href="#" class="cancel-link text-secondary">Cancel</a>
-            <a href="#" class="save-link text-success">Save</a>
+            <button type="submit" id="submit">Save</button>
           </div>
         </div>
       </div>`
@@ -83,29 +83,30 @@ function createGameView() {
             <div class="col single-view mb-5" data-id="1">
               <form>
                 <label for="image"><span class="text-danger">*</span>Image URL:</label>
-                <input type="text" name="image" id="image-input" required></input>
+                <input type="url" name="image" id="image-input" required>
 
                 <label for="title" class="mt-3"><span class="text-danger">*</span>Title:</label>
-                <input type="text" name="title" id="title-input" required></input>
+                <input type="text" name="title" id="title-input" required>
 
                 <label for="rating" class="mt-3"><span class="text-danger">*</span>Rating:</label>
                 <div class="rating">
-                  <input type="text" name="rating" id="rating-input" required></input>
+                  <input type="text" name="rating" id="rating-input" required>
                 </div>
 
                 <label for="description" class="mt-3">Description:</label>
                 <textarea name="description" rows="4" id="description-area"></textarea>
 
                 <label for="designers" class="mt-3"><span class="text-danger">*</span>Designer(s):</label>
-                <input type="text" name="designers"  id="designer-input" required></input>
+                <input type="text" name="designers"  id="designer-input" required>
 
                 <label for="year" class="mt-3"><span class="text-danger">*</span>Year published:</label>
-                <input type="text" name="year"  id="year-input" required></input>
-              </form>
+                <input type="text" name="year"  id="year-input" required>
+
               <div class="save-cancel-links mt-4">
                 <a href="#" class="cancel-link text-secondary">Cancel</a>
-                <a href="#" class="save-link text-success">Save</a>
+                <button type="submit" id="submit">Save</button>
               </div>
+              </form>
             </div>
           </div>`
 }
