@@ -30,7 +30,7 @@ function loadGames(baseURL) {
       }
     })
     .catch(errors => {
-      console.log(errors, "in get all");
+      console.log(errors, "in get all route");
     })
 }
 loadGames(baseURL)
@@ -86,7 +86,7 @@ function createGame() {
       })
       .catch(errors => {
         validateForm(newImage, newTitle, newRating, newDesigners, newYear)
-        console.log(errors);
+        console.log(errors, "in post route");
       })
   })
 
@@ -128,10 +128,8 @@ function updateGame(title, image, description, designers, year, rating, id, base
         renderOneGame(title, image, description, designers, year, rating, id, baseURL)
       })
       .catch(errors => {
-        console.log(newImage)
-        console.log(image);
         validateForm(newImage, newTitle, newRating, newDesigners, newYear)
-        console.log(errors, "in put");
+        console.log(errors, "in put route");
       })
   })
 }
@@ -144,7 +142,7 @@ function deleteGame(id) {
       loadGames(baseURL)
     })
     .catch(errors => {
-      console.log(errors, "in delete");
+      console.log(errors, "in delete route");
     })
 }
 
