@@ -78,22 +78,6 @@ function createGame() {
     let newYear = document.querySelector('#year-input').value
 
 
-    let imageLabel = document.querySelector('label[for="image"]')
-    if (newImage) imageLabel.innerHTML = `<span class="text-danger">*</span>Image URL:`
-
-    let titleLabel = document.querySelector('label[for="title"]')
-    if (newTitle) titleLabel.innerHTML = `<span class="text-danger">*</span>Title:`
-
-    let ratingLabel = document.querySelector('label[for="rating"]')
-    if (newRating) ratingLabel.innerHTML = `<span class="text-danger">*</span>Rating:`
-
-    let designersLabel = document.querySelector('label[for="designers"]')
-    if (newDesigners) designersLabel.innerHTML = `<span class="text-danger">*</span>Designer(s):`
-
-    let yearLabel = document.querySelector('label[for="year"]')
-    if (newYear) yearLabel.innerHTML = `<span class="text-danger">*</span>Year published:`
-
-
     axios.post(baseURL, {title: newTitle, image: newImage, rating: newRating, description: newDescription, designers: newDesigners, year: newYear, id:""})
       .then(result => {
         const {title, image, rating, description, designers, year, id} = result.data
@@ -101,26 +85,7 @@ function createGame() {
         renderOneGame(title, image, description, designers, year, rating, id, baseURL)
       })
       .catch(errors => {
-        if (!newImage){
-          let errorMessage = `<p class="text-danger">Please enter an image URL</p>`
-          imageLabel.innerHTML = errorMessage
-        }
-        if (!newTitle){
-          let errorMessage = `<p class="text-danger">Please enter a title</p>`
-          titleLabel.innerHTML = errorMessage
-        }
-        if (!newRating){
-          let errorMessage = `<p class="text-danger">Please enter a rating</p>`
-          ratingLabel.innerHTML = errorMessage
-        }
-        if (!newDesigners){
-          let errorMessage = `<p class="text-danger">Please enter designer name(s)</p>`
-          designersLabel.innerHTML = errorMessage
-        }
-        if (!newYear){
-          let errorMessage = `<p class="text-danger">Please enter year published</p>`
-          yearLabel.innerHTML = errorMessage
-        }
+        validateForm(newImage, newTitle, newRating, newDesigners, newYear)
         console.log(errors);
       })
   })
@@ -133,6 +98,8 @@ function createGame() {
   })
 
 }
+
+
 
 //////////UPDATE
 function updateGame(title, image, description, designers, year, rating, id, baseURL) {
@@ -161,6 +128,9 @@ function updateGame(title, image, description, designers, year, rating, id, base
         renderOneGame(title, image, description, designers, year, rating, id, baseURL)
       })
       .catch(errors => {
+        console.log(newImage)
+        console.log(image);
+        validateForm(newImage, newTitle, newRating, newDesigners, newYear)
         console.log(errors, "in put");
       })
   })
