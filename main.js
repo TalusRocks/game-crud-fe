@@ -78,7 +78,7 @@ function createGame() {
     let newYear = document.querySelector('#year-input').value
 
 
-    axios.post(baseURL, {title: newTitle, image: newImage, rating: newRating, description: newDescription, designers: newDesigners, year: newYear, id:""})
+    axios.post(baseURL, {title: newTitle, image: newImage, rating: newRating, description: newDescription, designers: newDesigners, year: newYear})
       .then(result => {
         const {title, image, rating, description, designers, year, id} = result.data
 
