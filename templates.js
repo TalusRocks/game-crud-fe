@@ -77,11 +77,7 @@ function editGameView(title, image, description, designers, year, rating, id, ba
 }
 
 function createGameView() {
-  return `    <div class="col-lg-6 col-md-12 col-sm-12">
-            <img class="wide" src="https://cf.geekdo-images.com/images/pic3742304_md.jpg" alt="game">
-          </div>
-          <div class="col-lg-6 col-md-12 col-sm-12">
-            <div class="col single-view mb-5" data-id="1">
+  return `<div class="col single-view mb-5" data-id="1">
               <form>
                 <label for="image"><span class="text-danger">*</span>Image URL:</label>
                 <input type="url" name="image" id="image-input" required>
@@ -108,6 +104,5 @@ function createGameView() {
                 <button type="submit" id="submit">Save</button>
               </div>
               </form>
-            </div>
-          </div>`
+            </div>`
 }

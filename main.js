@@ -69,7 +69,7 @@ function createGame() {
   //save listener --> UPDATE
   let submit = document.querySelector('#submit')
   submit.addEventListener('click', (e) => {
-
+    e.preventDefault()
     let newImage = document.querySelector('#image-input').value
     let newTitle = document.querySelector('#title-input').value
     let newRating = document.querySelector('#rating-input').value
@@ -115,6 +115,7 @@ function updateGame(title, image, description, designers, year, rating, id, base
   //save listener --> UPDATE
   let submit = document.querySelector('#submit')
   submit.addEventListener('click', (e) => {
+    e.preventDefault()
     let newImage = document.querySelector('#image-input').value
     let newTitle = document.querySelector('#title-input').value
     let newRating = document.querySelector('#rating-input').value
@@ -124,10 +125,8 @@ function updateGame(title, image, description, designers, year, rating, id, base
 
     axios.put(`${baseURL}/${id}`, {title: newTitle, image: newImage, rating: newRating, description: newDescription, designers: newDesigners, year: newYear})
       .then(result => {
-        console.log("hello from put's .then");
-        const {title, image, rating, description, designers, year} = result.data
         console.log(result.data);
-        console.log(renderOneGame());
+        const {title, image, rating, description, designers, year} = result.data
         renderOneGame(title, image, description, designers, year, rating, id, baseURL)
       })
       .catch(errors => {

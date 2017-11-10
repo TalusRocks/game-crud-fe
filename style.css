@@ -64,6 +64,7 @@ button.add-game {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+  max-width: 700px;
 }
 
 .edit-delete-links, .save-cancel-links {
