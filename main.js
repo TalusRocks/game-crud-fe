@@ -1,4 +1,4 @@
-const baseURL = 'http://localhost:3000/games'
+const baseURL = 'https://immense-retreat-77546.herokuapp.com/games'
 let gameRow = document.querySelector('.game-row')
 
 //////////LOAD ALL
