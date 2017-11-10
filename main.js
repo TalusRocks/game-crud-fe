@@ -124,7 +124,10 @@ function updateGame(title, image, description, designers, year, rating, id, base
 
     axios.put(`${baseURL}/${id}`, {title: newTitle, image: newImage, rating: newRating, description: newDescription, designers: newDesigners, year: newYear})
       .then(result => {
+        console.log("hello from put's .then");
         const {title, image, rating, description, designers, year} = result.data
+        console.log(result.data);
+        console.log(renderOneGame());
         renderOneGame(title, image, description, designers, year, rating, id, baseURL)
       })
       .catch(errors => {

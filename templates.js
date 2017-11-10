@@ -66,10 +66,11 @@ function editGameView(title, image, description, designers, year, rating, id, ba
 
             <label for="year" class="mt-3"><span class="text-danger">*</span>Year published:</label>
             <input type="text" name="year" value="${year}" id="year-input" required>
-          </form>
-          <div class="save-cancel-links mt-4">
-            <a href="#" class="cancel-link text-secondary">Cancel</a>
-            <button type="submit" id="submit">Save</button>
+            <div class="save-cancel-links mt-4">
+              <a href="#" class="cancel-link text-secondary">Cancel</a>
+              <button type="submit" id="submit">Save</button>
+            </div>
+            </form>
           </div>
         </div>
       </div>`
